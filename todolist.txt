@@ -1,0 +1,11 @@
+To Do List:
+
+create observableArray of:
+
+-Q&A
+-People
+-Publications - with links
+
+
+** Future work
+-publication files

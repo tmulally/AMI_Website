@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AMI | RIT</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo/favicon.ico">
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&sensor=true"></script>
+    <script type="text/javascript" src="lib/gmaps.js"></script>
+    <script type="text/javascript" src="data/content.js"></script>
+    <script data-main="app" src="lib/require.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/avd-style.css" /> </head>
+
+<body class="bg-lt" id="avd-main">
+    <div id="ritHeader" class="navbar-collapse collapse">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="http://www.rit.edu"><img id="leftImg" src="img/rit.gif"></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right navbar-dk">
+                <li><a class="rit-link" href="http://rit.edu/directories1.html">Directories</a></li>
+                <li><a class="rit-link" href="http://rit.edu/search/">Search RIT</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--Navbar-->
+    <nav class="navbar navbar-default navbar-fixed-top avd-header-color box-shadow-bot" id="avd-nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <!--<a class="navbar-brand" href="#"><span class="txt-lg">AVD</span> / Accessible Viewing Devices</a>--><span class="txt-lg" id="ami-txt">AMI</span>
+                <a class="navbar-brand header-img-wrap" href="#"> <img id="header-img" src="img/blind-white.png" height="30" alt="" /> </a>
+                <a class="navbar-brand header-img-wrap" href="#"> <img src="img/deaf-white.png" height="30" alt="" /> </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right navbar-lt" id="avd-nav-list">
+                    <!--<li class="active"><a href="#" id="avd-link-home" data-bind="click:function(){ setPageUrl($element) }">Home</a></li>-->
+                    <li><a href="#" id="avd-link-reu" data-bind="click:function(){ setPageUrl($element) }">REU</a></li>
+                    <li><a href="#" id="avd-link-people" data-bind="click:function(){ setPageUrl($element) }">People</a></li>
+                    <li><a href="#" id="avd-link-publications" data-bind="click:function(){ setPageUrl($element) }">Publications</a></li>
+                    <li><a href="#" id="avd-link-demonstrations" data-bind="click:function(){ setPageUrl($element) }">Demonstrations</a></li>
+                    <li><a href="#" id="avd-link-contactus" data-bind="click:function(){ setPageUrl($element) }">Contact Us</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="row row-no-neg-pad main-wrap lt-gray" id="page-heading-wrap" style="display: none">
+        <div class="container">
+            <section class="col-lg-12">
+                <div class="col-lg-2" data-bind="visible: imgVisible"> <img data-bind="attr: { src: pageImgSrc, alt: pageHeading }" height="80" width="80" /> </div>
+                <h1 class="center-txt color-dk-gray flt-left" id="page-heading" data-bind="text:pageHeading"></h1>
+                <!--<div>-->
+                <!--<img src="img/deaf-white.png" height="60" alt=""/>-->
+                <!--<img src="img/blind-white.png" height="60" alt=""/>-->
+                <!--</div>-->
+            </section>
+        </div>
+    </div>
+    <div id="avd-main-content" class="box-shadow-top" data-bind="template:{ name:pageBody }"> </div>
+    <div class="row row-no-neg-pad">
+        <div id="footer"> Principal Investigator and Primary Contact <address>
+            <div id="hcard-Raja-S-Kushalnagar" class="vcard">
+             <a class="url fn n" href="http://ami.rit.edu">
+                 <span class="given-name">Raja</span>
+                 <span class="additional-name">S</span>
+                 <span class="family-name">Kushalnagar</span>
+            </a>
+             <a class="email" href="mailto:reuami@rit.edu">reuami@rit.edu</a>
+             <div class="adr">
+                 <span class="street-address">20 Lomb Memorial Drive</span>
+                 <span class="locality">Rochester</span>, 
+                 <span class="region">NY</span>, 
+                 <span class="postal-code">14623</span>,
+                 <span class="country">USA</span>
+             </div>
+            </div>
+          </address>
+            <p class="small"><em>REU - Accessible Multimodal Interfaces <time>2015-2017</time>: This material is based upon work supported by the National Science Foundation under Award No. IIS-1468094.</em>
+                <br/> <em>Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</em>
+                <p class="small"> <a href="http://rit.edu">Rochester Institute of Technology</a>. All Rights Reserved | <a href="http://www.rit.edu/disclaimer.html">Disclaimer</a> | <a href="http://www.rit.edu/copyright.html">Copyright Infringement</a></p>
+        </div>
+    </div>
+    <!--Home Page Template Content-->
+    <script type="text/html" id="home-tmpl">
+        <div class="row row-no-neg-pad main-wrap white">
+            <div class="container">
+                <section class="col-sm-6">
+                    <!--<div class="row img-wrap">--><img src="img/avd_views.png" class="content-img">
+                    <!--</div>-->
+                </section>
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h1 class="panel-title">What is it all about?</h1> </div>
+                        <div class="panel-body">
+                            <p>Deaf, Hard of Hearing and low vision students face often encounter visual noise, such as large viewing distances, line of sight interference or obstruction, poor lighting or viewing angles. This classroom visual noise can significantly interfere with the visual perception and learning process for these students.</p>
+                            <p>Deaf and hard of hearing students that use aural-to-visual accommodations have to manage visual attention between two or more simultaneous visual sources. The extra visual sources include the visual representation of the classroom audio, which is typically either a sign language interpreter or real-time text typed in by a captionist, as shown above.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-no-neg-pad main-wrap baige">
+            <div class="container">
+                <section class="col-md-12">
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <p>Low vision students who have limited field of views do not have peripheral vision. They spend a lot of time searching for the relevant information while switching gaze between visual sources. Like deaf students who use accommodations, low vision students also have to learn to manage visual attention to minimize the time lost in searching for relevant information.</p>
+                                <p>We develop strategies and technical solutions to reduce visual noise. We also investigate visual and cognitive constraints in managing multiple sources and develop accessible technology views that enable students to manage multiple simultaneous visual information sources within their constraints.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="text-align: center">
+                        <br/> <img src="img/nsf.jpg" alt="NSF-Logo" id="nsf-img" height="80" width="80" /> </div>
+                </section>
+            </div>
+        </div>
+    </script>
+    <!--People Page Template Content-->
+    <script type="text/html" id="people-tmpl">
+        <div class="row row-no-neg-pad main-wrap white">
+            <div class="container">
+                <section class="col-md-6">
+                    <div class="block">
+                        <div class="imgPos"> <img src="img/people/raja.jpg" alt="Dr. Raja S. Kushalnagar" width="84" height="100" class="person-img"> </div>
+                        <p><b>Dr. Raja Kushalnagar</b>, J.D., LL.M, Ph.D.</p>
+                        <p>Information and Computing Studies</p>
+                        <p>Research Area: Accessible Computing for All</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="block">
+                        <div class="imgPos"> <img src="img/people/Huenerfauth.jpg" alt="Dr. Matthew Huenerfauth" width="84" height="100" class="person-img"> </div>
+                        <p><b>Dr. Matthew Huenerfauth</b></p>
+                        <p>Information Technology</p>
+                        <p>Research Area: Accessible Computing for All</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="block">
+                        <div class="imgPos"> <img src="img/people/vicki.jpg" alt="Dr. Vicki Hanson" width="84" height="100" class="person-img"> </div>
+                        <p><b>Dr. Vicki Hanson</b></p>
+                        <p>Information Sciences and Technology</p>
+                        <p>Research Area: Accessible Computing for All</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="block">
+                        <div class="imgPos"> <img src="img/people/stinson.jpg" alt="Dr. Michael Stinson" width="84" height="100" class="person-img"> </div>
+                        <p><b>Dr. Michael Stinson</b></p>
+                        <p>Master of Science in Secondary Education</p>
+                        <p>Research Area: Real Time Captions</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="block">
+                        <div class="imgPos"> <img src="img/people/GBehm.jpg" alt="Prof. Gary Behm" width="84" height="100" class="person-img"> </div>
+                        <p><b>Prof. Gary Behm</b></p>
+                        <p>Center for Access Technology</p>
+                        <p>Research Area: Accessible Computing for All</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </section>
+                <section>
+                    <div class="wrapper">
+                        <h1>Participants 2017</h1>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td width="216" class="profile-pics"> </td>
+                                    <td width="551">
+                                        <h2>Abraham Glasser</h2> <span>Rochester Institute of Technology</span> </td>
+                                </tr>
+                                <tr>
+                                    <td class="profile-pics"> </td>
+                                    <td>
+                                        <h2>Jason Antal</h2> <span>Gallaudet University</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="profile-pics"> </td>
+                                    <td>
+                                        <h2>Jaron Rehkop</h2> <span>Gallaudet University</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="profile-pics"> </td>
+                                    <td>
+                                        <h2>Thomas Mulally</h2> <span>Gallaudet University</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="profile-pics"> </td>
+                                    <td>
+                                        <h2>Ben Kassman</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="profile-pics"> </td>
+                                    <td>
+                                        <h2>Kesavan Kushalnagar</h2> <span>Rochester Institute of Technology</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="profile-pics"> </td>
+                                    <td>
+                                        <h2>Alexandra LeClerc</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="profile-pics"> </td>
+                                    <td>
+                                        <h2>Grace McPherson</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="profile-pics"> </td>
+                                    <td>
+                                        <h2>TBD</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </section>
+                <section>
+                    <div class="wrapper">
+                        <h1>Participants 2016</h1>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td width="551">
+                                        <h2>Abigail Spring</h2> <span>TBD</span>
+                                        <br> RIT Undergraduate Research Symposium presentation:
+                                        <br> <a href="products/2016/symposium_posters/P2_AlexCalderwoodPoster.pdf">Ax</a>
+                                        <br>
+                                        <br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Abraham Glasser</h2> <span>TBD<br>
+            </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Brenda Castro</h2> <span>TBD</span>
+                                        <br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Daniel Saavedra</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Joan Malasig</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Karina Bercan</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Kayla Vodacek</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Kevin Rathbun</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Paul Bayruns</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Pierre Price</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Tiandre Turner</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <section>
+                    <div class="wrapper">
+                        <h1>Participants 2015</h1>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td width="551">
+                                        <h2>Eric Epstein</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Fadi Haddad</h2> <span>TBD<br>
+            </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Jenna Tart</h2> <span>TBD</span>
+                                        <br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Mary Rose Weber</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Matthew Seita</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Jamie Simpson</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>James Waller</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Wilmot Merchant</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Benjamin Polstra</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2>Victor Ortiz</h2> <span>TBD</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>                
+                </div>
+            </div>
+    </script>
+    <!--Publications-->
+    <script type="text/html" id="publications-tmpl">
+        <div class="row row-no-neg-pad main-wrap white">
+            <div class="container">
+                <section class="col-md-12">
+                    <ol data-bind="foreach:avdContent.publications.pubList">
+                        <li data-bind="text:$data"></li>
+                    </ol>
+                </section>
+            </div>
+        </div>
+    </script>
+    <script type="text/html" id="pubfiles-tmpl">
+        <div class="row row-no-neg-pad main-wrap white">
+            <div class="container">
+                <section class="col-md-12">
+                    <h2>Currently Empty</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam odio dui, congue et sollicitudin a, iaculis nec nibh. Etiam efficitur est et elit vehicula molestie. Vivamus sed tempus quam, in mattis lectus. Etiam a mattis magna, sit amet vehicula erat. Curabitur dapibus ullamcorper metus, in egestas libero vulputate sed. Donec congue quam imperdiet sem pellentesque fermentum. Integer et consequat lorem. Cras turpis erat, porttitor non placerat eget, sollicitudin eget odio. Fusce eu ipsum eu metus aliquam scelerisque vel in lorem. Curabitur elit erat, hendrerit in elit sit amet, pellentesque rhoncus lectus. Cras sit amet ligula vel magna molestie gravida. Aenean urna ante, luctus id posuere vestibulum, viverra non felis. Fusce turpis lectus, bibendum eu rhoncus id, cursus luctus nisi. Phasellus a sem tincidunt mi auctor volutpat. Proin eget massa fringilla, gravida odio in, tristique dolor. Pellentesque et ex nec nisl consequat elementum id ut mi. </p>
+                    <p>Nulla et libero sit amet erat euismod consectetur at lobortis diam. In euismod maximus interdum. Proin lorem nunc, vulputate vitae arcu id, viverra bibendum nisi. Suspendisse consequat ligula sed nibh vulputate, ac molestie mauris fermentum. Sed consequat fringilla velit, facilisis aliquam magna porta sit amet. Cras scelerisque sed leo et auctor. Maecenas eu laoreet nunc. Integer sapien mauris, scelerisque et massa facilisis, vestibulum efficitur odio. Integer nec sollicitudin lacus. Donec hendrerit ut nibh eget facilisis. Vivamus quis nibh quis leo suscipit accumsan sed a nunc. </p>
+                    <p>Aliquam erat est, pellentesque scelerisque leo nec, porta venenatis nulla. Cras eu porttitor magna. Curabitur et imperdiet lorem, sit amet auctor libero. Sed iaculis ultrices mi, in consequat risus dapibus eu. Maecenas eleifend eget ipsum at gravida. Suspendisse finibus suscipit felis eu porttitor. Proin lacinia libero ante, quis aliquam mauris gravida ac. Donec nunc arcu, scelerisque ut quam pharetra, vulputate tristique lorem. Nunc dui est, ultricies volutpat purus ut, porttitor dictum neque. </p>
+                    <p>Nulla cursus vel ligula sed malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis convallis, leo sit amet condimentum imperdiet, elit eros lobortis risus, id ultricies velit velit sed dui. Etiam consectetur odio odio, non laoreet augue tristique ac. Suspendisse potenti. Nulla sit amet arcu vel nulla eleifend bibendum quis sit amet urna. Fusce blandit dapibus elit sit amet dictum. Vestibulum ac nibh blandit erat tincidunt tristique aliquam eget lectus. Fusce luctus metus rutrum erat blandit, id fermentum tellus dapibus. Vivamus et pellentesque magna, ac varius diam. Pellentesque interdum purus ut congue maximus. Sed blandit condimentum lacus, at vehicula magna pellentesque ut. Vestibulum blandit sapien arcu, eu convallis justo consequat et. Morbi fermentum convallis ligula, at varius purus congue quis. Sed gravida mauris at faucibus elementum. Integer luctus, diam in interdum cursus, mi lacus viverra justo, non viverra erat velit ut sapien. </p>
+                </section>
+            </div>
+        </div>
+    </script>
+    <!-- Contact Section -->
+    <script type="text/html" id="contactus-tmpl">
+        <div class="row row-no-neg-pad main-wrap white">
+            <div class="container">
+                <section class="col-md-12">
+                    <div class="col-sm-9">
+                        <div id="gmap"></div>
+                    </div>
+                    <div class="col-sm-3">
+                        <p> Research Experience for Undergraduates - Accessible Multimodal Interfaces </p>
+                        <p> Golisano College of Computer and Information Sciences (GCCIS) </p>
+                        <p> 20 Lomb Memorial Drive </p>
+                        <p> Rochester, NY 14623 </p>
+                        <p> <a href="mailto:reuami@rit.edu">Mail: reuami@rit.edu</a> </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </script>
+    <!--People Page Template Content-->
+    <script type="text/html" id="demonstrations-tmpl">
+        <div class="row row-no-neg-pad main-wrap white">
+            <div class="container"> <a href="https://www.youtube.com/playlist?list=PLF41vITV-LmwILnjmvfYQPf8jdPfWmHUv" class="sp-link">Youtube Channel</a> </div>
+        </div>
+    </script>
+    <!-- REU Section -->
+    <script charset="utf-8" type="text/html" id="reu-tmpl">
+        <div class="row row-no-neg-pad main-wrap">
+            <div class="col-md-2 nav" id="reu-nav-wrap">
+                <ul class="nav nav-pills nav-stacked" id="reu-nav">
+                    <!-- Going to use cl-effect-12 -->
+                    <li><a href="#" id="reu-link-overview" class="side-link active" data-bind="click:function(){ setREUPageUrl($element) }">Overview</a></li>
+                    <li><a href="#" class="side-link" id="reu-link-application" data-bind="click:function(){ setREUPageUrl($element) }">Application</a></li>
+                    <!--<li><a href="#" class="side-link" id="reu-link-people" data-bind="click:function(){ setREUPageUrl($element) }">People</a></li>-->
+                    <li><a href="#" class="side-link" id="reu-link-faq" data-bind="click:function(){ setREUPageUrl($element) }">FAQ</a></li>
+                    <!-- <li><a href="#" class="side-link" id="reu-link-research" data-bind="click:function(){ setREUPageUrl($element) }">Research</a></li> -->
+                </ul>
+            </div>
+            <section class="col-md-10">
+                <h2 class="reu-heading" data-bind="text:reuSectionHeading"></h2>
+                <div data-bind="template:{ name:reuSection }"> </div>
+            </section>
+        </div>
+    </script>
+    <!-- REU | Overview section -->
+    <script type="text/html" id="reu-overview-sect-tmpl">
+        <div class="row row-no-neg-pad main-wrap white">
+            <section class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">REU Goals</h3> </div>
+                    <div class="panel-body">
+                        <div class="col-md-3 img-wrap"> <img src="img/goal_icon/increase_icon_gray.png" alt="Increase" height="100" width="100" />
+                            <p class="icon-txt">Increase the number of future professionals in accessible computing.</p>
+                        </div>
+                        <div class="col-md-3 img-wrap"> <img src="img/goal_icon/computer_icon_gray.png" alt="Computer" height="100" width="100" />
+                            <p class="icon-txt">Develop students' ability to apply computer and information-based technologies to real-world problems</p>
+                        </div>
+                        <div class="col-md-3 img-wrap"> <img src="img/goal_icon/enroll_icon_gray.png" alt="Enroll" height="100" width="100" />
+                            <p class="icon-txt">Stimulate enrollment in graduate studies through the involvement of students in scientific investigations under the mentorship of research faculty.</p>
+                        </div>
+                        <div class="col-md-3 img-wrap"> <img src="img/goal_icon/handshake_icon_gray.png" alt="Collaborate" height="100" width="100" />
+                            <p class="icon-txt">Promote collaborative ties between the student's institution and Rochester Institute of Technology for future cooperative studies and research.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="row row-no-neg-pad main-wrap white">
+            <h3 class="sm-sect-h3">Intern Program</h3>
+            <section class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Program Information:</h3> </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td><b>Program Director:</b></td>
+                                <td>Dr. Raja Kushalnagar</td>
+                            </tr>
+                            <tr>
+                                <td><b>Mentors:</b></td>
+                                <td>Prof. Gary Behm, Dr. Matthew Huenerfauth, Dr. Vicki Hanson and Dr. Michael Stinson</td>
+                            </tr>
+                            <tr>
+                                <td><b>Location:</b></td>
+                                <td>Rochester Institute of Technology</td>
+                            </tr>
+                            <tr>
+                                <td><b>Duration:</b></td>
+                                <td>May 30 to Aug 5, 2017 (10 weeks)</td>
+                            </tr>
+                            <tr>
+                                <td><b>Stipend:</b> </td>
+                                <td>$500/week</td>
+                            </tr>
+                            <tr>
+                                <td><b>Housing and meal plan:</b></td>
+                                <td>Covered</td>
+                            </tr>
+                            <tr>
+                                <td><b>Travel allowance:</b></td>
+                                <td>up to $800 based on receipts</td>
+                            </tr>
+                            <tr>
+                                <td><b>Deadline:</b></td>
+                                <td>February 15</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Requirements</h3> </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Applicant must be a U.S. citizen or permanent resident of the United States.</li>
+                            <li>Applicant must be and remain an undergraduate student in good standing.</li>
+                            <li>Applicant must plan to complete a degree program.</li>
+                            <li>Interns must live in campus housing -- arranged by the REU site program manager.</li>
+                            <li>Interns must attend weekly seminars and programs.</li>
+                            <li>Interns must work a minimum of 40 hours per week at the REU site.</li>
+                            <li>Interns must prepare and submit a written report of the work done.</li>
+                            <li>Interns must give an oral presentation of work performed at the REU Site.</li>
+                            <li>Interns must design a web page describing their project and their experience.</li>
+                            <li>Interns must complete an exit interview.</li>
+                            <li>Interns must assist in further recruitments at their respective school.</li>
+                        </ul>
+                        <p><i>Remember, once you have accepted an offer from the program, you are obligated to complete the summer internship (all 10 weeks) program and meet the program requirements.</i></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </script>
+    <!-- REU | Application section -->
+    <script type="text/html" id="reu-application-sect-tmpl">
+        <!--Application sect-->
+        <div class="row row-no-neg-pad main-wrap white">
+            <section class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">REU AMI: 2017 CISE REU Common Application</h3> </div>
+                    <div class="panel-body">
+                        <p>The Accessible Multimedia Interfaces (AMI) program offers summer research opportunities focused on accessible multimedia interfaces. The goal is to improve accessibility and usability of streamed media (e.g., television programs or online lectures) for people with sensory disabilities (deaf, hard of hearing, low vision and blind). </p>
+                        <p>Ten students will be selected to participate in the AMI program at the Rochester Institute of Technology. The students will work in pairs and collaborate with peers and mentors who are deaf, hard of hearing, low vision or blind. The teams will work together to analyze the accessibility of online media platforms. The teams will work together to develop and evaluate solutions. The students will be immersed in an unique social and research environment where they can learn sign language and use accessible technology. </p>
+                        <p> You must do the following to complete your application:
+                            <ol>
+                                <li>Click on the "Apply" button to complete and submit your REU AMI: 2017 CISE REU Common Application.</li>
+                                <li>Send to reuami@rit.edu:
+                                    <ol type="a">
+                                        <li>Unofficial college transcript(s)</li>
+                                        <li>One page research interest statement. If applicable, describe a major project you did for a course or internship.</li>
+                                        <li>One letter of recommendation. Ask your recommender to email it to Dr. Kushalnagar (reuami@rit.edu)</li>
+                                    </ol>
+                                    <li>Send to reuami@rit.edu a message stating that you have completed steps 1 and 2. If the form and documents are complete, you will get an acknowledgement email that your application is complete and will be reviewed.</li>
+                            </ol>
+                        </p>
+                        <br/> <a href="https://docs.google.com/forms/d/1OD7WMIsZRfbD-LW3h5jpinqPVYAv2rqV_ueK5zJnH8A/viewform" class="sp-link">Apply</a> </div>
+                </div>
+            </section>
+            <section class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Applicant qualifications:</h3> </div>
+                    <div class="panel-body">
+                        <ol>
+                            <li>Enrolled in computer science, information technology, Human computing interaction or Accessible Computing or related field</li>
+                            <li>Expertise in Java, Python, OR</li>
+                            <li>Expertise in HTML/CSS/JS</li>
+                            <li>US citizens or permanent residents</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+            <section class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Required application materials:</h3> </div>
+                    <div class="panel-body">
+                        <ol>
+                            <li>REU AMI: 2017 CISE REU Common Application</li>
+                            <li>Unofficial college transcript(s) to reuami@rit.edu</li>
+                            <li>One page research interest statement. If applicable, describe a major project you did for a course or internship to reuami@rit.edu</li>
+                            <li>One letter of recommendation. Ask your recommender to email it to the Director of the REU AMI program at reuami@rit.edu</li>
+                            <p><b>** All application materials must be received by 5 PM, Feb 15, 2017.</b></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </script>
+    <!-- REU | People section -->
+    <script type="text/html" id="reu-people-sect-tmpl">
+        <!--People Sect-->
+        <div class="row row-no-neg-pad main-wrap white">
+            <section class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Directors and Faculty Mentors:</h3> </div>
+                    <div class="panel-body">
+                        <ul data-bind="foreach:avdContent.reu.content.people.peopleList">
+                            <li data-bind="text:$data" style="font-weight: bold;list-style-type:none;margin:14px 10px;"></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </script>
+    <!-- REU | FAQ section -->
+    <script type="text/html" id="reu-faq-sect-tmpl">
+        <!--FAQ Sect-->
+        <div class="row row-no-neg-pad main-wrap white">
+            <section class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">NSF REU on Accessible Computing:</h3> </div>
+                    <div class="panel-body"> <b>Q: </b>What is the REU-AMI program?
+                        <div class="well"> <b>A: </b>The REU AMI program provides undergraduates a research experience in doing graduate-style research. </div> <b>Q: </b>What are the benefits to me?
+                        <div class="well"> <b>A: </b>Experience in graduate-style research. A summer job in your career field. Knowledge. Fun. Yes, research can be fun. </div> <b>Q: </b>What exactly will I be doing in the REU at the Rochester Institute of Technology?
+                        <div class="well"> <b>A: </b>You will do extensive reading on an assigned research topic and you will additionally design and execute experiments. This process should culminate in quality written work. </div> <b>Q: </b>That's rather vague - how will I spend my time?
+                        <div class="well"> <b>A: </b>
+                            <ol>
+                                <li>Attend a short scheduling meeting, designed to help you make goals for the week. You will focus on attainable milestones (e.g. read these three papers twice each, and iteratively develop prototypes).</li>
+                                <li>Work during the week towards the above goals, meeting with a faculty advisor as necessary. You should make every effort to contact those knowledgeable about your research project for guidance when you get "stuck," so that you don't spend very long periods of time on the same problem. You don't have to work in a vacuum!</li>
+                                <li>Attend a meetings regularly each week, where you will report your progress. Further, each week one student from the REU will present their research project in a more formalized presentation to the entire group.</li>
+                            </ol>
+                        </div> <b>Q: </b>What exactly will be required of me?
+                        <div class="well">
+                            <p><b>A: </b>Research isn't a contract where exact specifications can be provided, but there are some minimal guidelines for the program overall.</p>
+                            <ol>
+                                <li>Attend meetings - it is important to know everyones' progress and to be able to help them with any obstacles they have encountered. At each meeting, be ready to speak a bit about your progress on your project.</li>
+                                <li>Create two presentations. These presentations (which can use a digital medium, such as PowerPoint) should give a good overview of the research area and the direction of the research. You should not assume that the audience is particularly knowledgeable about the topic area. You will do one at midterm and then a final presentation at the end of the REU.</li>
+                                <li>Work with an academic mentor and meet their expectations, whether those be focused on reading, implementing</li>
+                                <li>Write two reports. The reports provide insight into the individuals' experience at the REU, the background of the topic being studied, the nature of the research, the progress of that research, pitfalls to avoid, and planning information. This report can be fairly extensive and should provide much insight into the project itself. You will create one report at mid-term and a second at the conclusion of the REU.</li>
+                                <li>Write one paper. This is to be distinguished from the reports in that it should be a publishable entity. What does that mean? This will be formally written (the report can be less formal), it will be concise (around 6 pages, generally), and will contain only information relating directly to the research. The end goal should be that the paper should make the research reproducible by a reasonably knowledgeable reader. This will be due at the conclusion of the REU.</li>
+                            </ol>
+                        </div>
+                        <h3>Where will I get a research topic from?</h3>
+                        <p>Early in the program, there will be a number of projects presented by various academic mentors. The students in the REU will be able to request projects of interest to them. The Academic Director will attempt to fulfill these requests as best as possible.</p> <b>Q: </b>I've never done anything exactly like this - who will be there to help?
+                        <div class="well"> <b>A: </b>
+                            <ul>
+                                <li><i>Program Director:</i> This person makes decisions about salary and logistics.</li>
+                                <li><i>Academic Mentor:</i> This person will be an expert in the given field of your research and help direct your research. They can help you with project-related questions and all manner of academic issues.</li>
+                                <li><i>Program Assistant:</i> This person takes care of the day-to-day logistics (rooms, resources, etc.). Further, they may provide assistance with research questions.</li>
+                            </ul>
+                        </div>
+                        <h3>Where will I live? What should I bring?</h3>
+                        <p>You will live in an assigned apartment. What you will need to bring depends on the exact accommodations. As a general rule: if you want something, you should bring it. However, basic furniture will be present.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </script>
+    <script type="text/html" id="reu2-tmpl"> </script>
+    <!--Blank Page Template-->
+    <script type="text/html" id="blank-tmpl"></script>
+</body>
+
+</html>
